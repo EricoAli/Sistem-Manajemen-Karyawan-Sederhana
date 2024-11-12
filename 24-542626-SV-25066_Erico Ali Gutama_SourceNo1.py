@@ -1,9 +1,6 @@
-# Menyimpan data karyawan dalam bentuk list
 karyawan_list = []
 
-# Menjalankan loop utama program menggunakan while, if, elif, dan else
 while True:
-    # Menu Utama
     print("\nMenu Utama:")
     print("1. Dashboard Karyawan")
     print("2. Tambah Karyawan")
@@ -15,7 +12,6 @@ while True:
 
     pilihan = input("Pilih menu (1-7): ")
 
-    # Dashboard Karyawan (Menampilkan semua karyawan saat ini)
     if pilihan == "1":
         if len(karyawan_list) == 0:
             print("Belum ada karyawan.")
@@ -23,7 +19,6 @@ while True:
             for i, karyawan in enumerate(karyawan_list):
                 print(f"{i+1}. Nama: {karyawan['nama']}, Status: {karyawan['status']}, Gaji: {karyawan['gaji']}, Sisa Cuti: {karyawan['sisa_cuti']} hari")
 
-    # Tambah Karyawan (Menambahkan karyawan baru dengan data meliputi nama, jenis kelamin, status, dan gaji)
     elif pilihan == "2":
         nama = input("Masukkan nama karyawan: ")
         jenis_kelamin = input("Jenis kelamin (L/P): ")
@@ -51,7 +46,6 @@ while True:
         karyawan_list.append(karyawan)
         print(f"Karyawan {nama} berhasil ditambahkan.")
 
-    # Edit Karyawan (Mengubah nama, status, dan gaji)
     elif pilihan == "3":
         nama = input("Masukkan nama karyawan yang ingin diedit: ")
         karyawan_ditemukan = False
@@ -79,7 +73,6 @@ while True:
         if not karyawan_ditemukan:
             print("Karyawan tidak ditemukan.")
 
-    # Pecat Karyawan (Memecat karyawan)
     elif pilihan == "4":
         nama = input("Masukkan nama karyawan yang ingin dipecat: ")
         karyawan_ditemukan = False
@@ -92,7 +85,6 @@ while True:
         if not karyawan_ditemukan:
             print("Karyawan tidak ditemukan.")
 
-    # Izin Cuti (Memilih izin cuti)
     elif pilihan == "5":
         nama = input("Masukkan nama karyawan yang ingin cuti: ")
         karyawan_ditemukan = False
@@ -104,7 +96,6 @@ while True:
 
                 if jenis_cuti == "1":
                     cuti = 3
-                    # Memastikan cuti pernikahan mengurangi sisa cuti tahunan
                     if karyawan["sisa_cuti"] >= cuti:
                         karyawan["sisa_cuti"] -= cuti
                         print(f"Cuti pernikahan berhasil diproses. Sisa cuti: {karyawan['sisa_cuti']} hari.")
@@ -113,17 +104,16 @@ while True:
                 
                 elif jenis_cuti == "2":
                     if karyawan["jenis_kelamin"] == "P":
-                        cuti = 90  # Cuti melahirkan untuk perempuan tidak mengurangi cuti tahunan
+                        cuti = 90
                         print(f"Cuti melahirkan diberikan selama {cuti} hari untuk {karyawan['nama']}.")
                     elif karyawan["jenis_kelamin"] == "L":
-                        cuti = 10  # Cuti melahirkan untuk laki-laki tidak mengurangi cuti tahunan
+                        cuti = 10
                         print(f"Cuti melahirkan diberikan selama {cuti} hari untuk {karyawan['nama']}.")
                     else:
                         print("Jenis kelamin tidak valid.")
                 
                 elif jenis_cuti == "3":
                     cuti = 24
-                    # Memastikan cuti tahunan mengurangi sisa cuti
                     if karyawan["sisa_cuti"] >= cuti:
                         karyawan["sisa_cuti"] -= cuti
                         print(f"Cuti tahunan berhasil diproses. Sisa cuti: {karyawan['sisa_cuti']} hari.")
@@ -137,7 +127,6 @@ while True:
         if not karyawan_ditemukan:
             print("Karyawan tidak ditemukan.")
 
-    # Performa Karyawan (Menentukan memberi bonus atau tidak kepada karyawan dengan mengecek performa penjualan)
     elif pilihan == "6":
         nama = input("Masukkan nama karyawan yang ingin dinilai: ")
         karyawan_ditemukan = False
@@ -161,7 +150,6 @@ while True:
         if not karyawan_ditemukan:
             print("Karyawan tidak ditemukan.")
 
-    # Keluar dari program
     elif pilihan == "7":
         print("Program selesai.")
         break
